@@ -214,6 +214,7 @@ while true; do
     esac
 done
 echo "Alrightey, let's get to the fun part, installing BOINC!"
+apt -y update
 apt -y install boinc boinc-client-opencl boinc-client-nvidia >> $LOFGILE
 apt -y install boinctui >> $LOGFILE
 echo "Contacting BOINC servers.."
