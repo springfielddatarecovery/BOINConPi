@@ -177,6 +177,9 @@ LEAVEGBFREE=2
 MAXSTORAGEPERCENT=50
 USERNAME="241025_ea687b5f3122c834e30719fc557ea186"
 PASSWORD="241025_ea687b5f3122c834e30719fc557ea186"
+DEFAULTUSERNAME=$USERNAME
+DEFUAULTPASSWORD=$PASSWORD
+DEFAULTBAMURL=$BAMURL
 RESEARCHCUSTOMIZED=0
 MEDICALPROJECTS=("https://www.gpugrid.net/" "https://boinc.bakerlab.org/rosetta/" "https://www.sidock.si/sidock/")
 PHYSICSPROJECTS=("http://asteroidsathome.net/boinc/" "http://www.cosmologyathome.org/" "https://lhcathome.cern.ch/lhcathome/" "https://milkyway.cs.rpi.edu/milkyway/" "https://boinc.nanohub.org/nanoHUB_at_home/" "https://universeathome.pl/universe/")
@@ -225,6 +228,8 @@ boinccmd --acct_mgr sync >> $LOGFILE 2>&1
 if boinccmd --acct_mgr info | grep -q "$BAMURL"; then
   true
   else echo "Problem attaching to account manager. Will be crunching as guest!"
+  boinccmd --acct_mgr attach "$DEFAULTBAMURL" "$DEFAULTUSERNAME" "$DEFAULTPASSWORD" >> $LOGFILE 2>&1
+  boinccmd --acct_mgr sync >> $LOGFILE 2>&1
 fi
 #apply BOINC customizations
 if [ "$CUSTOMIZE" -eq "1" ]; then
