@@ -1,11 +1,14 @@
+#!/bin/bash
 #BOINC on Pi Script
+#to run: use the following command:
+#sudo wget 'https://raw.githubusercontent.com/springfielddatarecovery/BOINConPi/main/boinconpi.sh';sudo chmod +x boinconpi.sh;./boinconpi.sh
 echo "Welcome to BOINC on Pi! We're going to make it as simple as possible to install BOINC on your Pi."
 echo "We have picked some safe, sane defaults for BOINC, but you are welcome to customize the installation if you'd like"
 customize () {
   CUSTOMIZE=1
   #customize core selection
   while true; do
-    read -pr "What is the maximum % of cores BOINC should be allowed to run on? For example, if you want to run 3 cores on a 4 core system, put in 75. This rounds down. Default is 99 (all minus one)" yn
+    read -p "What is the maximum % of cores BOINC should be allowed to run on? For example, if you want to run 3 cores on a 4 core system, put in 75. This rounds down. Default is 99 (all minus one)" yn
     case $yn in
         [1234567890]* ) MAXCOREPERCENT=$yn;;
         * ) echo "Please enter a number";;
@@ -13,14 +16,14 @@ customize () {
   done
   #customize CPU allocation
   while true; do
-    read -pr "What is the maximum % of CPU BOINC should use? Default is 75" yn
+    read -p "What is the maximum % of CPU BOINC should use? Default is 75" yn
     case $yn in
         [1234567890]* ) MAXCPU=$yn;;
         * ) echo "Please enter a number";;
     esac
   done
   while true; do
-    read -pr "If non-BOINC CPU usage is above this %, pause BOINC. Default is 25" yn
+    read -p "If non-BOINC CPU usage is above this %, pause BOINC. Default is 25" yn
     case $yn in
         [1234567890]* ) RUNONLYWHENCPUBELOW=$yn;;
         * ) echo "Please enter a number";;
@@ -28,7 +31,7 @@ customize () {
   done
   #Ask about RAM
   while true; do
-    read -pr "What is the maximum % of RAM/memory that BOINC should use? Default is 75, we don't suggest going above 90" yn
+    read -p "What is the maximum % of RAM/memory that BOINC should use? Default is 75, we don't suggest going above 90" yn
     case $yn in
         [1234567890]* ) MAXMEMPERCENT=$yn;;
         * ) echo "Please enter a number";;
@@ -37,21 +40,21 @@ customize () {
   #Ask about storage
   ehco "We will now ask some questions about storage. BOINC will choose the least space allowed by these various options"
   while true; do
-    read -pr "What is the maximum amount of space in GB that BOINC should be allowed to use? Default is 3, <1 will probably be too small for any projects to run" yn
+    read -p "What is the maximum amount of space in GB that BOINC should be allowed to use? Default is 3, <1 will probably be too small for any projects to run" yn
     case $yn in
         [1234567890]* ) MAXSTORAGEINGB=$yn;;
         * ) echo "Please enter a number";;
     esac
   done
   while true; do
-    read -pr "What is the maximum % of total storage BOINC can use? Default is 50% to account for small SD cards" yn
+    read -p "What is the maximum % of total storage BOINC can use? Default is 50% to account for small SD cards" yn
     case $yn in
         [1234567890]* ) MAXSTORAGEPERCENT=$yn;;
         * ) echo "Please enter a number";;
     esac
   done
   while true; do
-    read -pr "No matter what, BOINC should make sure this many GB are left free. Default is 2" yn
+    read -p "No matter what, BOINC should make sure this many GB are left free. Default is 2" yn
     case $yn in
         [1234567890]* ) LEAVEGBFREE=$yn;;
         * ) echo "Please enter a number";;
@@ -60,17 +63,17 @@ customize () {
 }
 customizeaccount () {
   while true; do
-    read -pr "Will you be using BAM (BOINC Account Manager) or a different account manager? Y for BAM, N for different" yn
+    read -p "Will you be using BAM (BOINC Account Manager) or a different account manager? Y for BAM, N for different" yn
     case $yn in
         [Yy]* ) true;;
-        [Nn]* ) read -pr "What is your account manager URL e-mail address?" BAMURL;;
+        [Nn]* ) read -p "What is your account manager URL e-mail address?" BAMURL;;
         * ) echo "Please answer Y or N.";;
     esac
 done
 
   echo "We will now gather some information about your BAM account. If you want to use your weak authenticator, just answer with it for you username and password."
-    read -pr "What is your BAM e-mail address?" USERNAME
-    read -pr "What is your BAM password?" PASSWORD
+    read -p "What is your BAM e-mail address?" USERNAME
+    read -p "What is your BAM password?" PASSWORD
 
 }
 customizeresearch () {
@@ -80,7 +83,7 @@ customizeresearch () {
   echo "If you say NO to any of these areas of research, they will be disabled entirely."
   echo "Keep in mind that not all projects or categories will have workunits for your model of Pi. For this reason, we suggest leaving them all enabled"
   while true; do
-    read -pr "Do you want to support medical research projects (Rosetta, siDock, etc)?" yn
+    read -p "Do you want to support medical research projects (Rosetta, siDock, etc)?" yn
     case $yn in
         [Yy]* ) MEDICALENABLED=1;;
         [Nn]* ) MEDICALENABLED=0;;
@@ -88,7 +91,7 @@ customizeresearch () {
     esac
   done
   while true; do
-    read -pr "Do you want to support physics & astrophysics research projects (Cosmology, Universe, LHC, etc)?" yn
+    read -p "Do you want to support physics & astrophysics research projects (Cosmology, Universe, LHC, etc)?" yn
     case $yn in
         [Yy]* ) PHYSICSENABLED=1;;
         [Nn]* ) PHYSICSENABLED=0;;
@@ -96,7 +99,7 @@ customizeresearch () {
     esac
   done
   while true; do
-    read -pr "Do you want to support mathematical research (Collatz conjecture, YAFU, etc)?" yn
+    read -p "Do you want to support mathematical research (Collatz conjecture, YAFU, etc)?" yn
     case $yn in
         [Yy]* ) MATHENABLED=1;;
         [Nn]* ) MATHENABLED=0;;
@@ -104,7 +107,7 @@ customizeresearch () {
     esac
   done
   while true; do
-    read -pr "Do you want to support AI/Artificial Intelligence research (MLC, etc)?" yn
+    read -p "Do you want to support AI/Artificial Intelligence research (MLC, etc)?" yn
     case $yn in
         [Yy]* ) AIENABLED=1;;
         [Nn]* ) AIENABLED=0;;
@@ -112,7 +115,7 @@ customizeresearch () {
     esac
   done
   while true; do
-    read -pr "Do you want to support umbrella research projects (TN-GRID, BOINC@TACC, etc)? These are projects sponsored by universities that enable researchers to crunch data having to develop their own seperate BOINC projects" yn
+    read -p "Do you want to support umbrella research projects (TN-GRID, BOINC@TACC, etc)? These are projects sponsored by universities that enable researchers to crunch data having to develop their own seperate BOINC projects" yn
     case $yn in
         [Yy]* ) UMBRELLAENABLED=1;;
         [Nn]* ) UMBRELLAENABLED=0;;
@@ -178,7 +181,7 @@ MAXSTORAGEPERCENT=50
 USERNAME="241025_ea687b5f3122c834e30719fc557ea186"
 PASSWORD="241025_ea687b5f3122c834e30719fc557ea186"
 DEFAULTUSERNAME=$USERNAME
-DEFUAULTPASSWORD=$PASSWORD
+DEFAULTPASSWORD=$PASSWORD
 DEFAULTBAMURL=$BAMURL
 RESEARCHCUSTOMIZED=0
 MEDICALPROJECTS=("https://www.gpugrid.net/" "https://boinc.bakerlab.org/rosetta/" "https://www.sidock.si/sidock/")
@@ -186,20 +189,19 @@ PHYSICSPROJECTS=("http://asteroidsathome.net/boinc/" "http://www.cosmologyathome
 MATHPROJECTS=("https://sech.me/boinc/Amicable/" "https://escatter11.fullerton.edu/nfs/" "https://numberfields.asu.edu/NumberFields/" "https://boinc.progger.info/odlk/" "https://www.rechenkraft.net/yoyo/")
 UMBRELLAPROJECTS=("http://www.worldcommunitygrid.org")
 AIPROJECTS=("https://www.mlcathome.org/mlcathome/")
-LOGFILE=/tmp/boincinstaller.log
-
+LOGFILE="/tmp/boincinstaller.log"
 #Ask if user wants to customize install
 while true; do
-    read -pr "Would you like to customize the BOINC computing settings? Type Y or N followed by enter to proceed. Don't worry, you'll get to customize projects later if you'd like" yn
+    read -p "Would you like to customize the BOINC computing settings? Type Y or N followed by enter to proceed. Don't worry, you'll get to customize projects later if you'd like" yn
     case $yn in
         [Yy]* ) customize;;
-        [Nn]* ) true;;
+        [Nn]* ) break;;
         * ) echo "Please answer Y or N";;
     esac
 done
 #Ask about project selection
 while true; do
-    read -pr "Do you have a BAM (BOINC Account Manager account) or other account manager you'd like to use? Say N to crunch as a guest" yn
+    read -p "Do you have a BAM (BOINC Account Manager account) or other account manager you'd like to use? Say N to crunch as a guest" yn
     case $yn in
         [Yy]* ) customizeaccount;;
         [Nn]* ) true;;
@@ -209,7 +211,7 @@ done
 #Ask about project selection
 echo "By default, we prioritize projects in the following order: Medical research -> Physics/Astrophysics -> Math"
 while true; do
-    read -pr "Would you like to customize research areas? Otherwise we can pick a good mix of project to contribute to." yn
+    read -p "Would you like to customize research areas? Otherwise we can pick a good mix of project to contribute to." yn
     case $yn in
         [Yy]* ) customizeresearch;;
         [Nn]* ) true;;
@@ -218,11 +220,11 @@ while true; do
 done
 echo "Alrightey, let's get to the fun part, installing BOINC!"
 apt -y update
-apt -y install boinc boinc-client-opencl boinc-client-nvidia >> $LOFGILE
+apt -y install boinc boinc-client-opencl boinc-client-nvidia >> "$LOFGILE"
 apt -y install boinctui >> $LOGFILE
 echo "Contacting BOINC servers.."
 #attach to account manager
-boinccmd --acct_mgr attach "$BAMURL" "$USERNAME" "$PASSWORD" >> $LOGFILE 2>&1
+boinccmd --acct_mgr attach "$BAMURL" "$USERNAME" "$PASSWORD" >> "$LOGFILE" 2>&1
 boinccmd --acct_mgr sync >> $LOGFILE 2>&1
 #verify account manager successfully attached
 if boinccmd --acct_mgr info | grep -q "$BAMURL"; then
