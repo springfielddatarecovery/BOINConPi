@@ -188,7 +188,7 @@ echo "Cleaning up any previous BOINC installation attempts"
 apt -y --purge boinc boinc-client boinc-client-opencl boinc-clicnt-nvidia boinctui >> $LOGFILE 2>&1
 [ -d "/var/lib/boinc-client" ] && rm -r /var/lib/boinc-client >> $LOGFILE 2>&1
 echo "Installing BOINC.."
-for i in boinc boinc-client-opencl boinc-client-nvidia boinctui; do
+for i in boinc boinc-client-opencl boinc-client-nvidia-cuda boinctui; do
   sudo apt-get install -y $i >> $LOGFILE 2>&1
 done
 echo "Contacting BOINC servers.."
