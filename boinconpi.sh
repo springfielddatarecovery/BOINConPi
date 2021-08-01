@@ -149,6 +149,7 @@ UMBRELLAPROJECTS=("http://www.worldcommunitygrid.org")
 AIPROJECTS=("https://www.mlcathome.org/mlcathome/")
 LOGFILE="/tmp/boincinstaller.log"
 #Ask if user wants to customize install
+rm "$LOGFILE"
 while true; do
     echo "Would you like to customize the BOINC computing settings? Type Y or N followed by enter to proceed. Don't worry, you'll get to customize projects later if you'd like: "
     read yn
@@ -180,9 +181,13 @@ while true; do
     esac
 done
 echo "Alrightey, let's get to the fun part, installing BOINC!"
-apt -y update
+echo "Cleaning up any previous BOINC installation attempts"
+apt -y update >> $LOGFILE 2>&1
+apt -y --purge boinc boinc-client boinc-client-opencl boinc-clicnt-nvidia boinctui >> $LOGFILE 2>&1
+rm -r /var/lib/boinc-client >> $LOGFILE 2>&1
+echo "Installing BOINC.."
 apt -y install boinc boinc-client-opencl boinc-client-nvidia >> "$LOFGILE"
-apt -y install boinctui >> $LOGFILE
+apt -y install boinctui >> "$LOGFILE"
 echo "Contacting BOINC servers.."
 #attach to account manager
 boinccmd --acct_mgr attach "$BAMURL" "$USERNAME" "$PASSWORD" >> "$LOGFILE" 2>&1
