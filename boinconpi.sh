@@ -180,14 +180,15 @@ while true; do
         * ) echo "Please answer Y or N.";;
     esac
 done
-echo "Alrightey, let's get to the fun part, installing BOINC!"
-echo "Cleaning up any previous BOINC installation attempts"
+echo "Alrightey, let's get to the fun part, installing BOINC! This may take a few minutes..."
+echo "Updating APT..."
 apt -y update >> $LOGFILE 2>&1
+echo "Cleaning up any previous BOINC installation attempts"
 apt -y --purge boinc boinc-client boinc-client-opencl boinc-clicnt-nvidia boinctui >> $LOGFILE 2>&1
 rm -r /var/lib/boinc-client >> $LOGFILE 2>&1
 echo "Installing BOINC.."
-apt -y install boinc boinc-client-opencl boinc-client-nvidia >> "$LOFGILE"
-apt -y install boinctui >> "$LOGFILE"
+apt -y install boinc boinc-client-opencl boinc-client-nvidia >> $LOGFILE 2>&1
+apt -y install boinctui >> $LOGFILE 2>&1
 echo "Contacting BOINC servers.."
 #attach to account manager
 boinccmd --acct_mgr attach "$BAMURL" "$USERNAME" "$PASSWORD" >> "$LOGFILE" 2>&1
