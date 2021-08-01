@@ -65,8 +65,8 @@ customizeaccount () {
   while true; do
     read -pr "Will you be using BAM (BOINC Account Manager) or a different account manager? Y for BAM, N for different: " yn
     case $yn in
-        [Yy]* ) true;;
-        [Nn]* ) read -p "What is your account manager URL e-mail address?: " BAMURL;;
+        [Yy]* ) break;;
+        [Nn]* ) read -p "What is your account manager URL?: " BAMURL;;
         * ) echo "Please answer Y or N.";;
     esac
 done
@@ -205,7 +205,7 @@ while true; do
     read -p "Do you have a BAM (BOINC Account Manager account) or other account manager you'd like to use? Say N to crunch as a guest: " yn
     case $yn in
         [Yy]* ) customizeaccount;;
-        [Nn]* ) true;;
+        [Nn]* ) break;;
         * ) echo "Please answer Y or N.";;
     esac
 done
@@ -215,7 +215,7 @@ while true; do
     read -p "Would you like to customize research areas? Otherwise we can pick a good mix of project to contribute to: " yn
     case $yn in
         [Yy]* ) customizeresearch;;
-        [Nn]* ) true;;
+        [Nn]* ) break;;
         * ) echo "Please answer Y or N.";;
     esac
 done
