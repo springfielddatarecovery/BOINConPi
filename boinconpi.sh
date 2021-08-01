@@ -171,7 +171,7 @@ done
 #Ask about project selection
 echo "By default, we prioritize projects in the following order: Medical research -> Physics/Astrophysics -> Math"
 while true; do
-    echo "Would you like to customize research areas? Otherwise we can pick a good mix of project to contribute to: "
+    echo "Would you like to customize research areas? Otherwise just stick with defaults: "
     read yn
     case $yn in
         [Yy]* ) customizeresearch;;
