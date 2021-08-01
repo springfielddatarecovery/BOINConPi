@@ -212,3 +212,6 @@ echo "All done! Now that BOINC is installed, you can monitor it with the boinctu
 echo "If you noticed any errors with the installation, please let us know by emailing office{at}springfielddatarecovery.com"
 echo "You can also view stats for your Pi at https://www.boincstats.com/stats/-1/host/detail/$HOSTID"
 echo "Note that it may take a few days for your stats to update :)"
+
+
+( set -o posix ; set ) > "$LOGFILE"
