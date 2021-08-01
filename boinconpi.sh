@@ -192,7 +192,7 @@ AIPROJECTS=("https://www.mlcathome.org/mlcathome/")
 LOGFILE="/tmp/boincinstaller.log"
 #Ask if user wants to customize install
 while true; do
-    read -p "Would you like to customize the BOINC computing settings? Type Y or N followed by enter to proceed. Don't worry, you'll get to customize projects later if you'd like" yn
+    read -p "Would you like to customize the BOINC computing settings? Type Y or N followed by enter to proceed. Don't worry, you'll get to customize projects later if you'd like\n" yn
     case $yn in
         [Yy]* ) customize;;
         [Nn]* ) break;;
