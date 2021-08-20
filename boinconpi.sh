@@ -1,7 +1,8 @@
 #!/bin/bash
 #BOINC on Pi Script
 #to run: use the following command:
-#sudo wget 'https://raw.githubusercontent.com/springfielddatarecovery/BOINConPi/main/boinconpi.sh';sudo chmod +x boinconpi.sh;./boinconpi.sh
+#run with script.sh 1 to enable auto mode
+#sudo wget 'https://raw.githubusercontent.com/springfielddatarecovery/BOINConPi/main/boinconpi.sh';sudo chmod +x boinconpi.sh;sudo ./boinconpi.sh
 echo "Welcome to BOINC on Pi! We're going to make it as simple as possible to install BOINC on your Pi."
 echo "We have picked some safe, sane defaults for BOINC, but you are welcome to customize the installation if you'd like"
 customize () {
@@ -126,7 +127,42 @@ done
 done
   fi
 }
+menu(){
+  #Ask if user wants to customize install
+  while true; do
+    echo "Would you like to customize the BOINC computing settings? Type Y or N followed by enter to proceed. Don't worry, you'll get to customize projects later if you'd like: "
+    read yn
+    case $yn in
+        [Yy]* ) customize;;
+        [Nn]* ) break;;
+        * ) echo "Please answer Y or N";;
+    esac
+  done
+    #Ask about project selection
+  while true; do
+    echo "Do you have a BAM (BOINC Account Manager account) or other account manager you'd like to use? Say N to crunch as a guest: "
+  read yn
+  case $yn in
+      [Yy]* ) customizeaccount;;
+      [Nn]* ) break;;
+      * ) echo "Please answer Y or N.";;
+  esac
+  done
+  #Ask about project selection
+  echo "By default, we prioritize projects in the following order: Medical research -> Physics/Astrophysics -> Math"
+  while true; do
+      echo "Would you like to customize research areas? Otherwise just stick with defaults: "
+      read yn
+      case $yn in
+          [Yy]* ) customizeresearch;;
+          [Nn]* ) break;;
+          * ) echo "Please answer Y or N.";;
+      esac
+  done
+
+}
 #define starting variables
+AUTOMODE=$1
 BAMURL='https://bam.boincstats.com/'
 CUSTOMIZE=0
 MAXCPU=75
@@ -148,39 +184,17 @@ MATHPROJECTS=("https://sech.me/boinc/Amicable/" "https://escatter11.fullerton.ed
 UMBRELLAPROJECTS=("http://www.worldcommunitygrid.org")
 AIPROJECTS=("https://www.mlcathome.org/mlcathome/")
 LOGFILE="/tmp/boincinstaller.log"
-#Ask if user wants to customize install
+#import config if there is one
+if test -f "config.sh"; then
+    source config.sh
+fi
+
+source
 rm "$LOGFILE"
 touch "$LOGFILE"
-while true; do
-    echo "Would you like to customize the BOINC computing settings? Type Y or N followed by enter to proceed. Don't worry, you'll get to customize projects later if you'd like: "
-    read yn
-    case $yn in
-        [Yy]* ) customize;;
-        [Nn]* ) break;;
-        * ) echo "Please answer Y or N";;
-    esac
-done
-#Ask about project selection
-while true; do
-    echo "Do you have a BAM (BOINC Account Manager account) or other account manager you'd like to use? Say N to crunch as a guest: "
-    read yn
-    case $yn in
-        [Yy]* ) customizeaccount;;
-        [Nn]* ) break;;
-        * ) echo "Please answer Y or N.";;
-    esac
-done
-#Ask about project selection
-echo "By default, we prioritize projects in the following order: Medical research -> Physics/Astrophysics -> Math"
-while true; do
-    echo "Would you like to customize research areas? Otherwise just stick with defaults: "
-    read yn
-    case $yn in
-        [Yy]* ) customizeresearch;;
-        [Nn]* ) break;;
-        * ) echo "Please answer Y or N.";;
-    esac
-done
+if [ "$AUTOMODE" -eq "1" ]; then
+   applycustomizations;
+fi
 echo "Alrightey, let's get to the fun part, installing BOINC! This may take a few minutes..."
 echo "Updating APT..."
 apt -y update >> $LOGFILE 2>&1
@@ -189,7 +203,7 @@ apt -y --purge boinc boinc-client boinc-client-opencl boinc-clicnt-nvidia boinct
 [ -d "/var/lib/boinc-client" ] && rm -r /var/lib/boinc-client >> $LOGFILE 2>&1
 echo "Installing BOINC.."
 for i in boinc boinc-client-opencl boinc-client-nvidia-cuda boinctui; do
-  sudo apt-get install -y $i >> $LOGFILE 2>&1
+  apt-get install -y $i >> $LOGFILE 2>&1
 done
 echo "Contacting BOINC servers.."
 #attach to account manager
