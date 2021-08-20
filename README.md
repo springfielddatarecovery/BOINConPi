@@ -1,5 +1,5 @@
 # BOINConPi
-A script to help automate the installation of BOINC on Raspberry Pis. This has been tested to work on Rpi3B/3B+ and Rpi4 models, but should work on any raspbian-based distro.
+A script to help automate the installation of BOINC on Raspberry Pis. This has been tested to work on Rpi3B/3B+ and Rpi4 models, but should work on any Raspbian-based or Debian-based distro.
 
 The script supports crunching as guest or using your own account manager such as BAM!. By default, priority is given to projects in the following order: medical research, physics/astrophysics, umbrella projects (World Community Grid, for example), math.
 
