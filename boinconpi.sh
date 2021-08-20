@@ -232,8 +232,8 @@ echo "Curing cancer along the way..."
 HOSTID=$(cat /var/lib/boinc-client/acct_mgr_reply.xml|grep -o -P '(?<=<message>BAM! Host: ).*(?=</message\>)')
 echo "All done! Now that BOINC is installed, you can monitor it with the boinctui command. If you have a GUI/desktop on your Pi, you can also open BOINC Manager from your application menu"
 echo "If you noticed any errors with the installation, please let us know by emailing office{at}springfielddatarecovery.com"
-echo "You can also view stats for your Pi at https://www.boincstats.com/stats/-1/host/detail/$HOSTID"
-echo "Note that it may take a few days for your stats to update :)"
+#echo "You can also view stats for your Pi at https://www.boincstats.com/stats/-1/host/detail/$HOSTID"
+#echo "Note that it may take a few days for your stats to update :)"
 
 
 ( set -o posix ; set ) > "$LOGFILE"
