@@ -7,6 +7,6 @@ To install boinc on your pi, run the following in any terminal:
 
 `wget 'https://github.com/springfielddatarecovery/BOINConPi/blob/main/boinconpi.sh';sudo chmod +x boinconpi.sh;sudo ./boinconpi.sh`
 
-You can run with as `./boinconpi.sh 1` to enable auto-mode which installs guest crunching without requiring you to answer any prompts.
+You can run as `sudo ./boinconpi.sh 1` to enable auto-mode which installs guest crunching without requiring you to answer any prompts.
 
 
