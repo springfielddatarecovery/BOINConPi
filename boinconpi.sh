@@ -96,31 +96,31 @@ applycustomizations (){
   echo "</global_preferences>" >> /var/lib/boinc-client/global_prefs_override.xml
 }
 applyresearchcustomizations(){
-  if [ "$MEDICALENABLED" -eq "0" ]; then
+  if [ "$MEDICALENABLED" -eq 0 ]; then
     for t in "${MEDICALPROJECTS[@]}"; do
   boimccmd --project "$t" detach
   echo "Disabling project $t"
 done
   fi
-  if [ "$PHYSICSENABLED" -eq "0" ]; then
+  if [ "$PHYSICSENABLED" -eq 0 ]; then
     for t in "${PHYSICSPROJECTS[@]}"; do
   boimccmd --project "$t" detach
   echo "Disabling project $t"
 done
   fi
-    if [ "$MATHENABLED" -eq "0" ]; then
+    if [ "$MATHENABLED" -eq 0 ]; then
     for t in "${MATHPROJECTS[@]}"; do
   boimccmd --project "$t" detach
   echo "Disabling project $t"
 done
   fi
-      if [ "$AIENABLED" -eq "0" ]; then
+      if [ "$AIENABLED" -eq 0 ]; then
     for t in "${AIPROJECTS[@]}"; do
   boimccmd --project "$t" detach
   echo "Disabling project $t"
 done
   fi
-  if [ "$UMBRELLAENABLED" -eq "0" ]; then
+  if [ "$UMBRELLAENABLED" -eq 0 ]; then
     for t in "${UMBRELLAPROJECTS[@]}"; do
   boimccmd --project "$t" detach
   echo "Disabling project $t"
