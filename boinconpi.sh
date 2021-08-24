@@ -226,6 +226,7 @@ fi
 if [ $RESEARCHCUSTOMIZED -eq 1 ]; then
    applyresearchcustomizations;
 fi
+#
 echo "Applying your customizations..."
 echo "Coordinating with the aliens..."
 echo "Dodging cosmic radiation..."
