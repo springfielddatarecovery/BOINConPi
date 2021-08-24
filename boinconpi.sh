@@ -212,7 +212,7 @@ boinccmd --acct_mgr sync >> $LOGFILE 2>&1
 sleep 5
 #verify account manager successfully attached
 if boinccmd --acct_mgr info | grep -q "$BAMURL"; then
-  true
+  echo "Successfully attached to account manager"
   else echo "Problem attaching to account manager. Will be crunching as guest!"
   boinccmd --acct_mgr attach "$DEFAULTBAMURL" "$DEFAULTUSERNAME" "$DEFAULTPASSWORD" >> $LOGFILE 2>&1
   boinccmd --acct_mgr sync >> $LOGFILE 2>&1
