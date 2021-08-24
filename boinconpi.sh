@@ -162,6 +162,7 @@ menu(){
 
 }
 #define starting variables
+AUTOMODE=0
 AUTOMODE=$1
 BAMURL='https://bam.boincstats.com/'
 CUSTOMIZE=0
