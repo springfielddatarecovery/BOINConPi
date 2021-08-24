@@ -188,9 +188,11 @@ LOGFILE="/tmp/boincinstaller.log"
 if test -f "config.sh"; then
     source config.sh
 fi
-source
 rm "$LOGFILE"
 touch "$LOGFILE"
+if [ "$AUTOMODE" -ne "1" ]; then
+   menu
+fi
 echo "Alrightey, let's get to the fun part, installing BOINC! This may take a few minutes..."
 echo "Updating APT..."
 apt -y update >> $LOGFILE 2>&1
