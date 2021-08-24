@@ -190,7 +190,7 @@ if test -f "config.sh"; then
 fi
 rm "$LOGFILE"
 touch "$LOGFILE"
-if [ "$AUTOMODE" -ne "1" ]; then
+if [ "$AUTOMODE" != "1" ]; then
    menu
 fi
 echo "Alrightey, let's get to the fun part, installing BOINC! This may take a few minutes..."
