@@ -143,7 +143,7 @@ menu(){
     echo "Do you have a BAM (BOINC Account Manager account) or other account manager you'd like to use? Say N to crunch as a guest: "
   read yn
   case $yn in
-      [Yy]* ) customizeaccount;;
+      [Yy]* ) customizeaccount;break;;
       [Nn]* ) break;;
       * ) echo "Please answer Y or N.";;
   esac
