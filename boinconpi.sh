@@ -209,6 +209,7 @@ echo "Contacting BOINC servers.."
 #attach to account manager
 boinccmd --acct_mgr attach "$BAMURL" "$USERNAME" "$PASSWORD" >> "$LOGFILE" 2>&1
 boinccmd --acct_mgr sync >> $LOGFILE 2>&1
+sleep 5
 #verify account manager successfully attached
 if boinccmd --acct_mgr info | grep -q "$BAMURL"; then
   true
