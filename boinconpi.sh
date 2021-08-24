@@ -133,7 +133,7 @@ menu(){
     echo "Would you like to customize the BOINC computing settings? Type Y or N followed by enter to proceed. Don't worry, you'll get to customize projects later if you'd like: "
     read yn
     case $yn in
-        [Yy]* ) customize;;
+        [Yy]* ) customize;break;;
         [Nn]* ) break;;
         * ) echo "Please answer Y or N";;
     esac
@@ -154,7 +154,7 @@ menu(){
       echo "Would you like to customize research areas? Otherwise just stick with defaults (Y or  N): "
       read yn
       case $yn in
-          [Yy]* ) customizeresearch;;
+          [Yy]* ) customizeresearch;break;;
           [Nn]* ) break;;
           * ) echo "Please answer Y or N.";;
       esac
