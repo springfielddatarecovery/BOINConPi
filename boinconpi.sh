@@ -1,5 +1,5 @@
 #!/bin/bash
-#BOINC on Pi Script
+#BOINC on Pi Script#
 #to run: use the following command:
 #run with script.sh 1 to enable auto mode
 #sudo wget 'https://raw.githubusercontent.com/springfielddatarecovery/BOINConPi/main/boinconpi.sh';sudo chmod +x boinconpi.sh;sudo ./boinconpi.sh
