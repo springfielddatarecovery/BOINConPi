@@ -188,13 +188,9 @@ LOGFILE="/tmp/boincinstaller.log"
 if test -f "config.sh"; then
     source config.sh
 fi
-
 source
 rm "$LOGFILE"
 touch "$LOGFILE"
-if [ "$AUTOMODE" -eq "1" ]; then
-   applycustomizations;
-fi
 echo "Alrightey, let's get to the fun part, installing BOINC! This may take a few minutes..."
 echo "Updating APT..."
 apt -y update >> $LOGFILE 2>&1
@@ -217,6 +213,9 @@ if boinccmd --acct_mgr info | grep -q "$BAMURL"; then
   boinccmd --acct_mgr sync >> $LOGFILE 2>&1
 fi
 #apply BOINC customizations
+if [ "$AUTOMODE" -eq "1" ]; then
+   CUSTOMIZE="1"
+fi
 if [ "$CUSTOMIZE" -eq "1" ]; then
    applycustomizations;
 fi
