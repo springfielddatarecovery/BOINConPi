@@ -35,7 +35,7 @@ customizeaccount () {
         [Nn]* ) read -p "What is your account manager URL?: " BAMURL;;
         * ) echo "Please answer Y or N.";;
   esac
-  echo "We will now gather some information about your account manager/BAM account. If you want to use your weak authenticator, just answer with it for you username and password."
+  echo "We will now gather some information about your account manager/BAM account. If you want to use your weak authenticator, just answer with it for your username -and- password."
   read -p "What is your BAM username? Note this is not your e-mail address!: " USERNAME
   read -p "What is your BAM password?: " PASSWORD
 
