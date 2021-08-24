@@ -222,7 +222,7 @@ if [ "$CUSTOMIZE" -eq 1 ]; then
    applycustomizations;
 fi
 #apply research customizations
-if [ "$RESEARCHCUSTOMIZED" -eq "1" ]; then
+if [ $RESEARCHCUSTOMIZED -eq 1 ]; then
    applyresearchcustomizations;
 fi
 echo "Applying your customizations..."
