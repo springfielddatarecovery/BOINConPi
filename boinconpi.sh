@@ -198,6 +198,7 @@ echo "Alrightey, let's get to the fun part, installing BOINC! This may take a fe
 echo "Updating APT..."
 apt -y update >> $LOGFILE 2>&1
 echo "Cleaning up any previous BOINC installation attempts"
+systemctl stop boinc-client >> $LOGFILE 2>$1
 apt -y --purge boinc boinc-client boinc-client-opencl boinc-clicnt-nvidia boinctui >> $LOGFILE 2>&1
 [ -d "/var/lib/boinc-client" ] && rm -r /var/lib/boinc-client >> $LOGFILE 2>&1
 echo "Installing BOINC.."
