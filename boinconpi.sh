@@ -229,7 +229,7 @@ echo "Coordinating with the aliens..."
 echo "Dodging cosmic radiation..."
 echo "Curing cancer along the way..."
 #get BAM host id, disabled bc doesnt seem to link to BAM properly
-HOSTID=$(cat /var/lib/boinc-client/acct_mgr_reply.xml|grep -o -P '(?<=<message>BAM! Host: ).*(?=</message\>)')
+#HOSTID=$(cat /var/lib/boinc-client/acct_mgr_reply.xml|grep -o -P '(?<=<message>BAM! Host: ).*(?=</message\>)')
 echo "All done! Now that BOINC is installed, you can monitor it with the boinctui command. If you have a GUI/desktop on your Pi, you can also open BOINC Manager from your application menu"
 echo "If you noticed any errors with the installation, please let us know by emailing office{at}springfielddatarecovery.com"
 #echo "You can also view stats for your Pi at https://www.boincstats.com/stats/-1/host/detail/$HOSTID"
