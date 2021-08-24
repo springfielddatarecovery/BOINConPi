@@ -29,7 +29,7 @@ customize () {
 }
 customizeaccount () {
   echo "Will you be using BAM (BOINC Account Manager) or a different account manager? Y for BAM, N for different: "
-  read -pr yn
+  read -p yn
   case $yn in
         [Yy]* ) true;;
         [Nn]* ) read -p "What is your account manager URL?: " BAMURL;;
