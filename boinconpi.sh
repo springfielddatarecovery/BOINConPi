@@ -216,9 +216,7 @@ if boinccmd --acct_mgr info | grep -q "$BAMURL"; then
   boinccmd --acct_mgr sync >> $LOGFILE 2>&1
 fi
 #apply BOINC customizations
-echo "AUTOMODE IS"
-echo "$AUTOMODE"
-if [ $AUTOMODE -eq 1 ]; then
+if [ "$AUTOMODE" = "1" ]; then
    CUSTOMIZE=1
 fi
 if [ $CUSTOMIZE -eq 1 ]; then
