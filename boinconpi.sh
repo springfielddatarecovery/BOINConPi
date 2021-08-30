@@ -228,8 +228,8 @@ if [ $CUSTOMIZE -eq 1 ]; then
    applycustomizations;
 fi
 #apply fix for SiDock and Universe@Home because BAM authenticator does not work with them:
-/usr/bin/boinccmd --project_attach 'https://www.sidock.si/sidock/' 4380_6e40dd14c7aa6456a38e4cd495bf8dfc 4380_6e40dd14c7aa6456a38e4cd495bf8dfc
-/usr/bin/boinccmd --project_attach 'https://universeathome.pl/universe/' 227660_edf7ef1d67014a12af9476ba70b63485 227660_edf7ef1d67014a12af9476ba70b63485
+/usr/bin/boinccmd --project_attach 'https://www.sidock.si/sidock/' 4380_6e40dd14c7aa6456a38e4cd495bf8dfc 4380_6e40dd14c7aa6456a38e4cd495bf8dfc >> $LOGFILE 2>&1
+/usr/bin/boinccmd --project_attach 'https://universeathome.pl/universe/' 227660_edf7ef1d67014a12af9476ba70b63485 227660_edf7ef1d67014a12af9476ba70b63485 >> $LOGFILE 2>&1
 
 #apply research customizations
 if [ $RESEARCHCUSTOMIZED -eq 1 ]; then
@@ -246,6 +246,8 @@ echo "All done! Now that BOINC is installed, you can monitor it with the boinctu
 echo "If you noticed any errors with the installation, please let us know by emailing office{at}springfielddatarecovery.com"
 #echo "You can also view stats for your Pi at https://www.boincstats.com/stats/-1/host/detail/$HOSTID"
 #echo "Note that it may take a few days for your stats to update :)"
+echo "Note that BOINC is configured by default to only run when your Pi is idle (no keyboard/mouse activity in 30 minutes)."
+echo "This means you will not see any work units being crunched if you check boinctui/boinc manager right now. But you should see them downloaded and ready to crunch for when your pi becomes idle."
 #
 
 ( set -o posix ; set ) > "$LOGFILE"
