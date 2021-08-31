@@ -228,8 +228,13 @@ if [ $CUSTOMIZE -eq 1 ]; then
    applycustomizations;
 fi
 #apply fix for SiDock and Universe@Home because BAM authenticator does not work with them:
-/usr/bin/boinccmd --project_attach 'https://www.sidock.si/sidock/' 4380_6e40dd14c7aa6456a38e4cd495bf8dfc 4380_6e40dd14c7aa6456a38e4cd495bf8dfc >> $LOGFILE 2>&1
-/usr/bin/boinccmd --project_attach 'https://universeathome.pl/universe/' 227660_edf7ef1d67014a12af9476ba70b63485 227660_edf7ef1d67014a12af9476ba70b63485 >> $LOGFILE 2>&1
+if [ "$USERNAME" = 241025_ea687b5f3122c834e30719fc557ea186 ]; then
+   /usr/bin/boinccmd --project_attach 'https://www.sidock.si/sidock/' 4380_6e40dd14c7aa6456a38e4cd495bf8dfc 4380_6e40dd14c7aa6456a38e4cd495bf8dfc >> $LOGFILE 2>&1;
+fi
+if [ "$USERNAME" = 241025_ea687b5f3122c834e30719fc557ea186 ]; then
+   /usr/bin/boinccmd --project_attach 'https://universeathome.pl/universe/' 227660_edf7ef1d67014a12af9476ba70b63485 227660_edf7ef1d67014a12af9476ba70b63485 >> $LOGFILE 2>&1;
+fi
+
 
 #apply research customizations
 if [ $RESEARCHCUSTOMIZED -eq 1 ]; then
