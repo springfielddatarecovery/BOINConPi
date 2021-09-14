@@ -130,7 +130,7 @@ done
 menu(){
   #Ask if user wants to customize install
   while true; do
-    echo "Would you like to customize the BOINC computing settings? Type Y or N followed by enter to proceed. Don't worry, you'll get to customize projects later if you'd like: "
+    echo "Would you like to customize the BOINC CPU/memory usage settings? Type Y or N followed by enter to proceed. Don't worry, you'll get to customize projects and account login info later if you'd like: "
     read yn
     case $yn in
         [Yy]* ) customize;break;;
