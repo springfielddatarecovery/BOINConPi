@@ -201,7 +201,7 @@ echo "Cleaning up any previous BOINC installation attempts"
 systemctl stop boinc-client >> $LOGFILE 2>&1
 for i in boinc boinc-client boinc-client-opencl boinc-client-nvidia-cuda boinctui; do
   echo "Removing package $i"
-  apt -y purge $i >> $LOGFILE 2>&1
+  apt -yy purge $i >> $LOGFILE 2>&1
 done
 [ -d "/var/lib/boinc-client" ] && rm -r /var/lib/boinc-client >> $LOGFILE 2>&1
 echo "Installing BOINC.."
