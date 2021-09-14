@@ -151,7 +151,7 @@ menu(){
   #Ask about project selection
   echo "By default, we prioritize projects in the following order: Medical research -> Physics/Astrophysics -> Math"
   while true; do
-      echo "Would you like to customize research areas? Otherwise just stick with defaults (Y or  N): "
+      echo "Would you like to customize research areas? Otherwise just stick with defaults (Y or  N) provided by us or your account manager account if you added one: "
       read yn
       case $yn in
           [Yy]* ) customizeresearch;break;;
