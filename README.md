@@ -11,4 +11,8 @@ To install boinc on your pi, run the following in any terminal:
 
 You can run as `sudo ./boinconpi.sh 1` to enable auto-mode which installs guest crunching without requiring you to answer any prompts.
 
+If you are setting up your Pi to be dedicated to BOINC only, we suggest [DietPi](https://dietpi.com) to get the most out of it. It's a slimmed down version of Raspbian which reduces memory, CPU, and read/write usage.
+
+For a custom-buildtdistro for BOINC on Pi and other embedded devices, check out [EmbeddedBOINC](https://github.com/CallMeFoxie/EmbeddedBOINC])
+
 
