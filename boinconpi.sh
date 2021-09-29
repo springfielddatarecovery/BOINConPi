@@ -206,8 +206,10 @@ done
 [ -d "/var/lib/boinc-client" ] && rm -r /var/lib/boinc-client >> $LOGFILE 2>&1
 echo "Installing BOINC.."
 for i in boinc boinc-client-opencl boinc-client-nvidia-cuda boinctui; do
+  echo "Installing $i"
   apt-get install -y $i >> $LOGFILE 2>&1
 done
+systemctl restart boinc-client
 echo "Contacting BOINC servers.."
 #attach to account manager
 boinccmd --acct_mgr attach "$BAMURL" "$USERNAME" "$PASSWORD" >> "$LOGFILE" 2>&1
